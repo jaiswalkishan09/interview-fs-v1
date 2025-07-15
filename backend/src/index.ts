@@ -1,13 +1,13 @@
-import express from 'express';
+import express from "express";
+import { getEventCounter, updateEventCount } from "./controller/eventCount.js";
 
 const app = express();
 const PORT = 5000;
 
-app.get('/api/message', (_req, res) => {
-  res.send('Welcome to Event Desk');
-});
+app.use(express.json());
+app.get("/api/get", getEventCounter);
+app.put("/api/update", updateEventCount);
 
 app.listen(PORT, () => {
   console.log(`Backend running at http://localhost:${PORT}`);
 });
-
